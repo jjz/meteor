@@ -1,0 +1,21 @@
+<head>
+    <title>meteor-study</title>
+</head>
+
+<body>
+<h1>I am Meteor!</h1>
+
+{{> meteor_study}}
+
+</body>
+
+<template name="meteor_study">
+    <h2>{{templateName}}</h2>
+    {{#each languages}}
+        <h3>{{name}}</h3>
+    {{/each}}
+
+    <div class="snippet">
+        {{{snippetBody}}}
+    </div>
+</template>
