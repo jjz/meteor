@@ -1,0 +1,15 @@
+<head>
+  <title>meteor-collection</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> meteor_collection }}
+</body>
+
+<template name="meteor_collection">
+  {{#each languages}}
+      <h3>{{name}}</h3>
+  {{/each}}
+</template>
