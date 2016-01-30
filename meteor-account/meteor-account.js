@@ -1,23 +1,33 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
+    Accounts.ui.config({
+        passwordSignupFields: "USERNAME_ONLY"
+    });
+    Template.add.events({
+        "submit .new-language": function (event) {
+            event.preventDefault();
+            console.log("test");
+            console.log(Meteor.user().username);
+            var text = event.target.text.value;
+            Languages.insert({
+                text: text,
+                createdAt: new Date(),
+                owner: Meteor.userId(),
+                username: Meteor.user().username
+            });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
+
+        }
+    });
+    Template.detail.helpers({
+        languages: Languages.find({owner: Meteor.userId()})
+    });
+
+
 }
 
 if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
+    Meteor.startup(function () {
+        // code to run on server at startup
+    });
 }

@@ -1,14 +1,28 @@
 <head>
-  <title>meteor-account</title>
+    <title>meteor-account</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+{{> loginButtons}}
+{{#if currentUser}}
+    <div>
+        <strong>{{currentUser.username}}</strong>
+    </div>
+    {{> add}}
+    {{> detail}}
+{{/if}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="add">
+    <form class="new-language">
+        <input type="text" name="text" placeholder="add new language">
+        <input type="submit" value="Submit"/>
+    </form>
+</template>
+
+<template name="detail">
+    {{#each languages}}
+        <div class="text"><strong>{{username}}</strong> -{{text}}</div>
+    {{/each}}
 </template>
