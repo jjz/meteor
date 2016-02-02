@@ -1,0 +1,39 @@
+<head>
+    <title>meteor-form</title>
+</head>
+
+<body>
+<h2>form</h2>
+<div class="container">
+    <form class="new-language">
+        <input type="text" name="text" placeholder="add language"/>
+        <input type="submit" value="Submit"/>
+    </form>
+</div>
+<h2>Welcome to Meteor!</h2>
+
+{{> meteor_collection }}
+<h2>Other event</h2>
+{{> other_event}}
+
+</body>
+
+
+<template name="meteor_collection">
+    {{#each languages}}
+        <h3>{{name}}</h3>
+
+    {{/each}}
+</template>
+
+<template name="other_event">
+    {{#each others}}
+        <li>
+            <h3>{{name}} ,{{updateAt}}</h3>
+            <button class="delete">delete</button>
+            <button class="update">update</button>
+
+        </li>
+
+    {{/each}}
+</template>
