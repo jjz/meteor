@@ -33,6 +33,7 @@ if (Meteor.isClient) {
             event.preventDefault();
             var text = event.target.text.value;
             Meteor.call("addLanguage", text);
+            event.target.text.value = "";
 
         }
     });
@@ -42,12 +43,12 @@ if (Meteor.isClient) {
     });
     Template.other_event.events({
         'click .delete': function () {
-            Languages.remove(this._id);
+
             Meteor.call("removeLanguage", this._id);
 
         },
         'click .update': function () {
-            Meteor.call("updateLanguage", this._id);
+            Meteor.call("removeLanguage", this._id);
         }
 
     });
